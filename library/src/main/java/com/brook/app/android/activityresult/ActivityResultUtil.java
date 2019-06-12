@@ -2,10 +2,13 @@ package com.brook.app.android.activityresult;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.annotation.IntRange;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+
+import java.util.Random;
 
 /**
  * @author Brook
@@ -44,7 +47,7 @@ public class ActivityResultUtil {
         return new ActivityResultUtil(v4Fragment.getActivity());
     }
 
-    public ActivityResultUtil requestCode(int requestCode) {
+    public ActivityResultUtil requestCode(@IntRange(from = 0, to = 0xffff) int requestCode) {
         this.requestCode = requestCode;
         return this;
     }
@@ -55,6 +58,10 @@ public class ActivityResultUtil {
     }
 
     public void startActivityForResult(Intent intent, Callback callback) {
+        if (requestCode <= 0 || requestCode > 0xffff) {
+            requestCode = new Random().nextInt(0xffff - 5000) + 5000;
+        }
+
         if (fragmentActivity != null) {
             FragmentManager supportFragmentManager = fragmentActivity.getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();

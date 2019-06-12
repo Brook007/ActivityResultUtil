@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         // 如果限制上传到服务器的图片类型时可以直接写如："image/jpeg 、 image/png等的类型" 所有类型则写 "image/*"
         intentToPickPic.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/jpeg");
 
-        ActivityResultUtil.with(this).requestCode(0).startActivityForResult(intentToPickPic, new ActivityResultUtil.Callback() {
+        ActivityResultUtil.with(this).requestCode(10000).startActivityForResult(intentToPickPic, new ActivityResultUtil.Callback() {
             @Override
             public void onActivityResult(int requestCode, int resultCode, Intent data) {
 

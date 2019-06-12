@@ -22,10 +22,26 @@ allprojects {
 然后在需要使用的模块的build.gradle中添加以下代码
 ```groovy
 dependencies {
-    implementation 'com.github.Brook007:ActivityResultUtil:1.0.0'
+    implementation 'com.github.Brook007:ActivityResultUtil:1.0.1'
 }
 ```
 
+## 示例代码
+
+仅需下面代码就可以实现activity结果的回调了
+
+```java
+Intent intentToPickPic = new Intent(Intent.ACTION_PICK, null);
+// 如果限制图片类型时可以直接写如："image/jpeg 、 image/png等的类型" 所有类型则写 "image/*"
+intentToPickPic.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/jpeg");
+
+ActivityResultUtil.with(this).requestCode(10000).startActivityForResult(intentToPickPic, new ActivityResultUtil.Callback() {
+            @Override
+            public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+            }
+        });
+```
 
 ## 开源协议  LICENSE
 
