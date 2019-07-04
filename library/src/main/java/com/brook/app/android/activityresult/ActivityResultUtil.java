@@ -58,6 +58,9 @@ public class ActivityResultUtil {
     }
 
     public void startActivityForResult(Intent intent, Callback callback) {
+        if (intent == null) {
+            return;
+        }
         if (requestCode <= 0 || requestCode > 0xffff) {
             requestCode = new Random().nextInt(0xffff - 5000) + 5000;
         }
