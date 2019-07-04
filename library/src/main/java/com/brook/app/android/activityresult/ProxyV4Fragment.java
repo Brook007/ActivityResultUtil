@@ -43,7 +43,9 @@ public class ProxyV4Fragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        startActivityForResult(intent, requestCode);
+        if (intent != null) {
+            startActivityForResult(intent, requestCode);
+        }
         return null;
     }
 
