@@ -69,12 +69,12 @@ public class ActivityResultUtil {
             FragmentManager supportFragmentManager = fragmentActivity.getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
             fragmentTransaction.replace(android.R.id.content, ProxyV4Fragment.newInstance(intent, requestCode, standardMode, callback), "ProxyV4Fragment" + requestCode);
-            fragmentTransaction.commit();
+            fragmentTransaction.commitNowAllowingStateLoss();
         } else if (activity != null) {
             android.app.FragmentManager fragmentManager = activity.getFragmentManager();
             android.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(android.R.id.content, ProxyFragment.newInstance(intent, requestCode, standardMode, callback), "ProxyFragment" + requestCode);
-            fragmentTransaction.commit();
+            fragmentTransaction.commitNowAllowingStateLoss();
         }
     }
 
