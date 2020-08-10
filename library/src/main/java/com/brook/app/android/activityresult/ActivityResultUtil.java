@@ -74,7 +74,7 @@ public class ActivityResultUtil {
             android.app.FragmentManager fragmentManager = activity.getFragmentManager();
             android.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(android.R.id.content, ProxyFragment.newInstance(intent, requestCode, standardMode, callback), "ProxyFragment" + requestCode);
-            fragmentTransaction.commitNowAllowingStateLoss();
+            fragmentTransaction.commitAllowingStateLoss();
         }
     }
 
